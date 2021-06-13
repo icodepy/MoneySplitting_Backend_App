@@ -5,19 +5,36 @@ import projectmanagementTrello.UserEnum;
 import java.util.HashMap;
 import java.util.Map;
 
+import static splitwiseapp.UserIdConstants.*;
+
 public class UserService extends IUserService<String>{
 
     public UserService() {
     }
 
     @Override
+    Map<String, User<String>> createUserMapObject(){
+        return new HashMap<>();
+    }
+
+    @Override
     public Map<String, User<String>> createUserMap() {
-        Map<String, User<String>> userMap = new HashMap<>();
-        userMap.put("u1", createUser("u1", UserEnum.JETHA));
-        userMap.put("u2", createUser("u2", UserEnum.AYYAR));
-        userMap.put("u3", createUser("u3", UserEnum.POPAT));
-        userMap.put("u4", createUser("u3", UserEnum.GOLI));
+        userMap = createUserMapObject();
+        addUserToMap(userMap, U1, UserEnum.JETHA);
+        addUserToMap(userMap, U2, UserEnum.AYYAR);
+        addUserToMap(userMap, U3, UserEnum.POPAT);
+        addUserToMap(userMap, U4, UserEnum.GOLI);
         return userMap;
+    }
+
+    private void addUserToMap(Map<String, User<String>> userMap, String id, UserEnum name){
+        try {
+            User user = createUser(U1, UserEnum.JETHA);
+        } catch (IllegalAccessException illegalAccessException) {
+            System.out.println("A user with this id:"+id+ " already exists"+" "+ illegalAccessException.getMessage());
+            System.out.println(illegalAccessException);
+        }
+        return;
     }
 
 }
