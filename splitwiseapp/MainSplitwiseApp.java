@@ -15,6 +15,10 @@ public class MainSplitwiseApp {
 
         UserFactory factory = new UserFactory();
         userService = factory.createUser(UserType.USER);
+        if(userService==null){
+            System.out.println("Kindly enter a valid user type");
+            return;
+        }
         Map<String, User> userMap = userService.createUserMap();
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
