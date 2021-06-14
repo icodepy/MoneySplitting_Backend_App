@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class IUserService<T> {
-    T id;
+    protected T id;
     Map<T, User<T>> userMap;
     public <T> User<T> createUser(T id, UserEnum name) throws IllegalAccessException{
         if(userMap.containsKey(id)) throw new IllegalAccessException("User with this id already Exists");
